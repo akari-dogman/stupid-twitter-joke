@@ -1,0 +1,86 @@
+<h1>Fake success maker: CyberAIO</h1>
+
+<form id="fakecyber">
+    Name: <input type="text" name="productname"><br>
+    Store: <input type="text" name="store"><br>
+    Size: <input type="text" name="size"><br>
+    Profile: <input type="text" name="profile"><br>
+    Order: <input type="text" name="order"><br>
+    Proxy List: <input type="text" name="proxylist"><br>
+    Mode: <input type="text" name="mode"><br>
+    Image: <input type="url" name="image" placeholder="https://i.imgur.com/RwPw4Hf.jpg"><br>
+    <b>Webhook: </b><input type="url" name="webhook"><br>
+</form>
+
+<button onclick="submitFake()">Send webhook</button>
+
+<br>
+
+<img src="https://i.imgur.com/gv3WMLc.png">
+
+
+<script>
+    const xhttp = new XMLHttpRequest();
+    function submitFake() {
+      var form = document.getElementById("fakecyber");
+      var hmm = {
+    "username":"CyberAIO",
+    "avatar_url":"https://i.imgur.com/A4d3xm2.png",
+  "embeds": [
+    {
+        "title":"**Successfully checked out!**",
+      "description": form.elements[0].value,
+      "color": 6801741,
+      "footer": {
+        "icon_url": "https://i.imgur.com/A4d3xm2.png",
+        "text": "CyberAIO \u2022 2020-04-04T04:59:24.072Z"
+      },
+      "thumbnail": {
+        "url": form.elements[7].value,
+      },
+      "fields": [
+        {
+          "name": "Store",
+          "value": form.elements[1].value,
+          "inline": true
+        },
+        {
+          "name": "Size",
+          "value": form.elements[2].value,
+          "inline": true
+        },
+        {
+          "name": "Profile",
+          "value": "||"+form.elements[3].value+"||",
+          "inline": true
+        },
+        {
+          "name": "Order",
+          "value": "||"+form.elements[4].value+"||",
+          "inline": true
+        },
+        {
+          "name": "Proxy List",
+          "value": "||"+form.elements[5].value+"||",
+          "inline": true
+        },
+        {
+          "name": "Mode",
+          "value": form.elements[6].value,
+          "inline": true
+        }
+      ]
+    }
+  ]
+};
+parsedlol = JSON.stringify(hmm)
+    console.log(hmm);
+    xhttp.open("POST", form.elements[8].value);
+      xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(parsedlol);
+    }
+    xhttp.onreadystatechange = (e) => {
+        console.log(xhttp.responseText)
+    }
+    </script>
+
